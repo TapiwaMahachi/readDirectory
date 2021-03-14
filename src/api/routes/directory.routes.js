@@ -1,15 +1,15 @@
 import express from 'express';
-import { directory } from '../controller/directory.controller.js';
+import { fileDetails } from '../controller/directory.controller.js';
 
 const router = express.Router();
 
 router
     .route('/')
     /**
-     * @api {get} /api/directory  Get
-     * @description get all files in the current directory
+     * @api {get} /api/fileDetail  Get
+     * @description get all files in the current fileDetail
      * 
      */
-    .get(directory);
+    .get(fileDetails);
 
 export  {router as dirRoutes};
