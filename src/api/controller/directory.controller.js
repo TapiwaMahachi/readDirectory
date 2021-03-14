@@ -3,17 +3,33 @@ import fs from 'fs';
 import path from 'path';
 
 
-export const fileDetails = (req, res ,next) =>{
+export function dirDetails(req, res ,next){
+    let subdir = req.params.subdir;
+    let subdir_path="";
+    
+    if(subdir)
+        subdir_path = path.resolve(subdir)
+    
+    console.log(subdir_path)
 
-    fs.readdir(process.cwd(), {withFileTypes: true}, (err, files)=>{
+    fs.readdir(
+        subdir ? subdir_path :
+        process.cwd(),
+        {withFileTypes: true},
+        (err, files)=>{
 
         if(err)  return next(err);
 
         const updatedFiles = files.map(file =>{
 
+            //getting file extension name and root directory
             const {base, ext, dir} =  path.parse(path.resolve(file.name));
-            const fullPath = `${dir}\\${base}`; 
-            const stats = fs.fstatSync(fs.openSync(fullPath,'r'));
+
+            //path for the cwd or subdirectory
+            const fullPath = path.join(subdir ? subdir_path : dir, base);
+
+            //file status
+            const stats = fs.fstatSync(fs.openSync(fullPath));
            
             const isDirectory = stats.isDirectory();
   
@@ -29,7 +45,7 @@ export const fileDetails = (req, res ,next) =>{
                 }
                 : 
                 {
-                    directory: base,
+                    subdir: base,
                     isDirectory,
                     fullPath,
                 };    
@@ -39,3 +55,10 @@ export const fileDetails = (req, res ,next) =>{
     });   
 
 };
+
+function permission(mode){
+    switch(mode){
+        default:
+            return 'reading only'
+    }
+}

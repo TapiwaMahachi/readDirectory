@@ -1,15 +1,23 @@
 import express from 'express';
-import { fileDetails } from '../controller/directory.controller.js';
+import { dirDetails } from '../controller/directory.controller.js';
 
 const router = express.Router();
 
 router
     .route('/')
     /**
-     * @api {get} /api/fileDetail  Get
-     * @description get all files in the current fileDetail
+     * @api {get} /api/directory  Get
+     * @description get all files in the current working directory
      * 
      */
-    .get(fileDetails);
+    .get(dirDetails);
+
+router
+    .route('/:subdir')
+    /**
+     * @api{get} /api/:params Get
+     * @description get all files from subdirectory
+     */
+    .get(dirDetails)
 
 export  {router as dirRoutes};

@@ -12,15 +12,15 @@ app.use(express.urlencoded({extended: true}));
 /**
  * APi route
  */
-app.use('/api', routes)
+app.use('/api', routes);
 
 /**
  * error handle
  */
 app.use((err, req, res, next)=>{
 
-    console.log(`Error : ${err}`);
-})
+    res.send(`Error : ${err}`);
+});
 
 
 export default app;
