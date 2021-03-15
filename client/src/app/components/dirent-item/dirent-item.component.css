@@ -1,0 +1,39 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border: 1px solid rgb(208, 218, 208);
+    justify-content: space-evenly;
+    width: 95%;
+    margin: auto;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+}
+.title{
+    text-align: center;
+    font-weight: 400;
+}
+label{
+    font-size: 1.1rem;
+    min-width: 100px;
+}
+p{
+    font-size: 1rem;
+}
+
+.path:hover > p{
+    cursor: pointer;
+    color: rgb(17, 155, 209);
+    text-decoration: underline;
+}
+@media (min-width: 600px){
+    .info{
+    display: flex;
+    flex-direction: row;
+   }
+ .container{
+     width: 50%;
+ }
+}

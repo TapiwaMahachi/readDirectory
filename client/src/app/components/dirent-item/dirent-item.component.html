@@ -1,0 +1,32 @@
+<div class="container">
+    <h2 class="title">{{ dirent.isDirectory ? 'Directory' : 'File' }}</h2>
+    <div class="info">
+        <label>Name :</label>
+        <p>{{dirent.name}}</p>
+    </div>
+    <div>
+    <div class="info">
+        <label>Ext:</label>
+        <p>{{dirent.extension}}</p>
+    </div>
+    </div>
+    <div class="info">
+        <label>Permision :</label>
+        <p>{{dirent.permission}}</p>
+    </div>
+    <div class="info">
+        <label>Size :</label>
+        <p>{{dirent.size}}</p>
+    </div>
+    <div class="info">
+        <label>Created :</label>
+        <p>{{dirent.createdAt}}</p>
+    </div>
+    <div 
+        (click)="onClick(dirent)" 
+        [ngClass]= "setClass()"
+    >
+        <label>Path</label>
+        <p>{{dirent.path}}</p>
+    </div>
+</div>

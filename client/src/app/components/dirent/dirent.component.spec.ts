@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReadDirectoryComponent } from './read-directory.component';
+import { DirentComponent } from './dirent.component';
 
-describe('ReadDirectoryComponent', () => {
-  let component: ReadDirectoryComponent;
-  let fixture: ComponentFixture<ReadDirectoryComponent>;
+describe('DirentComponent', () => {
+  let component: DirentComponent;
+  let fixture: ComponentFixture<DirentComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReadDirectoryComponent ]
+      declarations: [ DirentComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ReadDirectoryComponent);
+    fixture = TestBed.createComponent(DirentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
