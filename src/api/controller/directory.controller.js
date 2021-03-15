@@ -1,6 +1,19 @@
 import httpStatus from 'http-status';
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
+
+// export function dirDetails(req, res, next){
+
+//      console.log(req.params.subdir)
+//     const dir = fileURLToPath(import.meta.url)
+//     const __dirname = path.join();
+
+
+//     console.log(__dirname)
+//     console.log(path.basename(__dirname))
+
+// }
 
 
 export function dirDetails(req, res ,next){
