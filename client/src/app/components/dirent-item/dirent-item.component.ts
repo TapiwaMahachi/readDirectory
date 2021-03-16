@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {Dirent} from '../../models/Dirent';
+import {DirentService} from '../../services/dirent.service';
+import {DirentComponent} from '../../components/dirent/dirent.component';
+
 
 @Component({
   selector: 'app-dirent-item',
@@ -10,11 +13,12 @@ export class DirentItemComponent implements OnInit {
 
  @Input() dirent: Dirent; 
 
-  constructor() { }
+  constructor(private ds:DirentService, private dc:DirentComponent) { }
 
   ngOnInit(): void {
   }
-  //dynamically ading classes
+
+  //dynamically adding classes
   setClass(){
     let classes={
       path: this.dirent.isDirectory,
@@ -22,8 +26,11 @@ export class DirentItemComponent implements OnInit {
     }
     return classes;
   }
-  //method caled on click event
- onClick(dirent){
-   console.log('dirent used')
- }
+
+  //method called on click event
+  onClick(dirent){
+    this.ds.getSubfolder(dirent).subscribe(dirents=>{
+      this.dc.changeDirent(dirents)
+    });
+  }
 }

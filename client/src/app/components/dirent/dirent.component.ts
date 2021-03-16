@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Dirent} from '../../models/Dirent';
-import {DirentService} from '../../services/dirent.service';
+import {DirentService} from '../../services/dirent.service'
 
 
 @Component({
@@ -17,10 +17,11 @@ export class DirentComponent implements OnInit {
   ngOnInit(): void {
    this.ds.getDirent().subscribe(dirents =>{
       this.dirents = dirents;
-       console.log(this.dirents);
    });
-  
   }
-  
+
+  changeDirent(dirents): void {
+    this.dirents = dirents
+  }
 
 }

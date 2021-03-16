@@ -1,29 +1,13 @@
 import httpStatus from 'http-status';
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
-
-// export function dirDetails(req, res, next){
-
-//      console.log(req.params.subdir)
-//     const dir = fileURLToPath(import.meta.url)
-//     const __dirname = path.join();
-
-
-//     console.log(__dirname)
-//     console.log(path.basename(__dirname))
-
-// }
 
 
 export function dirDetails(req, res ,next){
-    let subdir = req.params.subdir;
+    let subdir = req.body.subdir;
     let subdir_path="";
-    
     if(subdir)
         subdir_path = path.resolve(subdir)
-    
-    console.log(subdir_path)
 
     fs.readdir(
         subdir ? subdir_path :
@@ -43,7 +27,6 @@ export function dirDetails(req, res ,next){
 
             //file status
             const stats = fs.fstatSync(fs.openSync(fullPath));
-           
   
             return  {
                 name: base,
@@ -54,13 +37,11 @@ export function dirDetails(req, res ,next){
                 isDirectory: stats.isDirectory(),
                 path: fullPath,
                 base: dir,
-            }
-                    
+            }           
         });
 
         res.status(httpStatus.OK).send(updatedFiles);
-    });   
-
+    }); 
 };
 
 function permission(mode){

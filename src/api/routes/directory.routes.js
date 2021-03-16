@@ -10,14 +10,12 @@ router
      * @description get all files in the current working directory
      * 
      */
-    .get(dirDetails);
-
-router
-    .route('/:subdir')
-    /**
-     * @api{get} /api/:params Get
-     * @description get all files from subdirectory
-     */
     .get(dirDetails)
+    /**
+     * @api {post} /api/directory post
+     * @description add the subdirectory to the body access the subfolder path
+     */
+    .post(dirDetails);
+
 
 export  {router as dirRoutes};

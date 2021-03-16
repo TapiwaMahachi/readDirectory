@@ -4,21 +4,37 @@ import {HttpClient, HttpHeaders } from '@angular/common/http';
 import {Dirent} from '../models/Dirent';
 import { Observable } from 'rxjs';
 
-
+const httpOptions = {
+  headers: new HttpHeaders({
+    "Content-Type": "application/json"
+  })
+};
 @Injectable({
   providedIn: 'root'
 })
 export class DirentService {
 
-  direntUrl:string = '/api/directory/client';
+  direntUrl:string = '/api/directory';
   //limit fetch number
   limit ='?_limit=2';
 
   constructor(private http:HttpClient) { }
 
-  getDirent():Observable<Dirent[]>{
+  //get root directory 
+  getDirent():Observable<Dirent[]>{ 
+    return this.http.get<Dirent []>(this.direntUrl); 
+  }
 
-    return this.http.get<Dirent []>(`${this.direntUrl}${this.limit}`);
+  //get subfolder contents
+  getSubfolder(dirent):Observable<any>{
+    const path = dirent.path;
+    //removing the  main directory path
+    const subdir:string = path.slice(dirent.base.length + 1);
     
+    return this.http.post(
+      this.direntUrl, 
+      JSON.stringify({subdir}), 
+      httpOptions
+    );
   }
 }
