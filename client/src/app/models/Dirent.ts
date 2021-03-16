@@ -7,5 +7,6 @@ export class Dirent {
     path: string;
     permission: string;
     isDirectory: boolean;
+    dir: string;
 
 }

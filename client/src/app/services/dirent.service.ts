@@ -1,44 +1,24 @@
 import { Injectable } from '@angular/core';
+import {HttpClient, HttpHeaders } from '@angular/common/http';
+
+import {Dirent} from '../models/Dirent';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class DirentService {
 
-  constructor() { }
+  direntUrl:string = '/api/directory/client';
+  //limit fetch number
+  limit ='?_limit=2';
 
-  getDirent(){
-    return [
-      {
-        name: "package.json",
-        permission: "read and write",
-        size: 400,
-        path: '/src/package.json',
-        createdAt: new Date(),
-        isDirectory: true,
-        extension: '.json',
+  constructor(private http:HttpClient) { }
 
-      },
-      {
-        name: "package.lock.json",
-        permission: "read and write",
-        size: 400,
-        path: '/src/package.lock.json',
-        createdAt: new Date(),
-        isDirectory: false,
-        extension: '.json',
+  getDirent():Observable<Dirent[]>{
 
-      },
-       {
-        name: "node_modules",
-        permission: "read and write",
-        size: 400,
-        path: '/src/node_modules',
-        createdAt: new Date(),
-        isDirectory: true,
-        extension: '',
-
-      }
-    ]
+    return this.http.get<Dirent []>(`${this.direntUrl}${this.limit}`);
+    
   }
 }

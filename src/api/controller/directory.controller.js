@@ -44,24 +44,18 @@ export function dirDetails(req, res ,next){
             //file status
             const stats = fs.fstatSync(fs.openSync(fullPath));
            
-            const isDirectory = stats.isDirectory();
   
-            return ext ?
-                {
-                    fileName: base,
-                    extension: ext,
-                    fileSize: stats.size,
-                    createdAt: stats.birthtime.toLocaleDateString(),
-                    filePermission: stats.mode, 
-                    isDirectory,
-                    fullPath,
-                }
-                : 
-                {
-                    subdir: base,
-                    isDirectory,
-                    fullPath,
-                };    
+            return  {
+                name: base,
+                extension: ext,
+                size: stats.size,
+                createdAt: stats.birthtime.toLocaleDateString(),
+                permission: stats.mode, 
+                isDirectory: stats.isDirectory(),
+                path: fullPath,
+                base: dir,
+            }
+                    
         });
 
         res.status(httpStatus.OK).send(updatedFiles);

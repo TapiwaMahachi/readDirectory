@@ -15,7 +15,12 @@ export class DirentComponent implements OnInit {
 
 
   ngOnInit(): void {
-   this.dirents = this.ds.getDirent();
+   this.ds.getDirent().subscribe(dirents =>{
+      this.dirents = dirents;
+       console.log(this.dirents);
+   });
+  
   }
+  
 
 }
