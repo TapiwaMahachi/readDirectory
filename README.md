@@ -13,18 +13,17 @@ npm i
 ```
 
 
-## Running Locally
+#### Running Locally
 
-start the server
+Start local server
 
 ```
 npm start
 
 ```
-then open new terminal cd into client
-
-Run 
+Then open new terminal cd into client
+run 
 
 `npm start` 
 
-for a dev server. Navigate to `http://localhost:4200/`.
+Navigate to `http://localhost:4200/`.
