@@ -15,9 +15,7 @@ const httpOptions = {
 export class DirentService {
 
   direntUrl:string = '/api/directory';
-  //limit fetch number
-  limit ='?_limit=2';
-
+ 
   constructor(private http:HttpClient) { }
 
   //get root directory 

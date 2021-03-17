@@ -32,8 +32,7 @@ p{
 }
 .path > p{
     cursor: pointer;
-    color: rgb(17, 155, 209);
-    
+    color: rgb(17, 155, 209);   
 }
 .path:hover > p{
     text-decoration: underline;
