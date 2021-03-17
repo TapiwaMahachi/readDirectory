@@ -9,4 +9,4 @@ dotenv.config({
 });
 
 export const env = process.env.NODE_ENV;
-export const port = process.env.PORT;
+export const port = process.env.PORT || 9000;
