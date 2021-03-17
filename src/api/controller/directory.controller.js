@@ -1,6 +1,9 @@
 import httpStatus from 'http-status';
 import fs from 'fs';
-import path from 'path';
+import  path from 'path';
+import Mode from 'stat-mode';
+
+
 
 
 export function dirDetails(req, res ,next){
@@ -21,20 +24,20 @@ export function dirDetails(req, res ,next){
 
             //getting file extension name and root directory
             const {base, ext, dir} =  path.parse(path.resolve(file.name));
-
+            
             //path for the cwd or subdirectory
             const fullPath = path.join(subdir ? subdir_path : dir, base);
 
             //file status
-            const stats = fs.fstatSync(fs.openSync(fullPath));
-  
+            const {mode, birthtime, size} = fs.fstatSync(fs.openSync(fullPath));
+            
             return  {
                 name: base,
                 extension: ext,
-                size: stats.size,
-                createdAt: stats.birthtime.toLocaleDateString(),
-                permission: stats.mode, 
-                isDirectory: stats.isDirectory(),
+                size: size,
+                createdAt: birthtime.toLocaleDateString(),
+                permission: new Mode(mode).toString(), 
+                isDirectory: file.isDirectory(),
                 path: fullPath,
                 base: dir,
             }           
@@ -43,10 +46,3 @@ export function dirDetails(req, res ,next){
         res.status(httpStatus.OK).send(updatedFiles);
     }); 
 };
-
-function permission(mode){
-    switch(mode){
-        default:
-            return 'reading only'
-    }
-}
