@@ -4,6 +4,7 @@
 
 - Run server with  [express](https://expressjs.com/)
 - Load environment variables from .env files with [dotenv](https://github.com/motdotla/dotenv)
+- Read file permissions with [stat-mode](https://github.com/TooTallNate/stat-mode)
 
 
 #### Install dependencies:
