@@ -1,0 +1,19 @@
+header{
+    min-height: 8vh;
+    border-bottom: 2px solid rgb(194, 186, 186);
+    padding:.7rem;
+    margin-bottom: 1rem;
+}
+.header{
+ font-size: 1.5rem;
+ margin-left:  1rem;
+ font-weight: 500;
+ text-decoration: none;
+ color: inherit;
+ padding: .5rem;
+}
+.header:hover{
+ color: #59b367;
+ border: 1px solid #59b367;
+ border-radius: 5px;
+}

@@ -22,11 +22,11 @@ export class DirentItemComponent implements OnInit {
   setClass(){
     let classes={
       path: this.dirent.isDirectory,
-      info: true
+      info: true,
+     'path-ext': true
     }
     return classes;
   }
-
   //method called on click event
   onClick(dirent){
     this.ds.getSubfolder(dirent).subscribe(dirents=>{

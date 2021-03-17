@@ -21,8 +21,9 @@ export class DirentService {
   constructor(private http:HttpClient) { }
 
   //get root directory 
-  getDirent():Observable<Dirent[]>{ 
-    return this.http.get<Dirent []>(this.direntUrl); 
+  getDirent():Observable<Dirent[]>{
+    return this.http.get<Dirent []>(this.direntUrl);
+    
   }
 
   //get subfolder contents
