@@ -18,9 +18,11 @@
         <label>Permision :</label>
         <p>{{dirent.permission}}</p>
     </div>
-    <div class="info">
+    <div class="info"
+    [style.display]="dirent.size > 0 ? 'flex' : 'none'"
+    >
         <label>Size :</label>
-        <p>{{dirent.size}}</p>
+        <p>{{dirent.size}} bytes</p>
     </div>
     <div class="info">
         <label>Created :</label>

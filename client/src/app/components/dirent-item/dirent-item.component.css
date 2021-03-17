@@ -35,6 +35,9 @@ p{
     color: rgb(17, 155, 209);
     
 }
+.path:hover > p{
+    text-decoration: underline;
+}
 @media (min-width: 600px){
  .info{
     display: flex;
