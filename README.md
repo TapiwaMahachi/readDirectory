@@ -1,7 +1,7 @@
 
 ### A small NodeJs App with Angular
 
- -  a Node.JS API that allows a client app to: Obtain the full directory listing of a given directory path on the local filesystem where the api is running
+ - API that allows a client app to: Obtain the full directory listing of a given directory path on the local filesystem where the api is running
 
 ## Dependencies
 
